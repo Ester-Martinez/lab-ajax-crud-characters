@@ -38,19 +38,19 @@ const printOneCharacter = () => {
 window.addEventListener("load", () => {
   document
     .getElementById("fetch-all")
-    .addEventListener("click", function(event) {
+    .addEventListener("click", function (event) {
       printAllCharacters();
     });
 
   document
     .getElementById("fetch-one")
-    .addEventListener("click", function(event) {
+    .addEventListener("click", function (event) {
       printOneCharacter();
     });
 
   document
     .getElementById("delete-one")
-    .addEventListener("click", function(event) {
+    .addEventListener("click", function (event) {
       const id = document.querySelector("#char-id-delete").value;
       console.log(id);
       charactersAPI
@@ -65,7 +65,7 @@ window.addEventListener("load", () => {
 
   document
     .getElementById("edit-character-form")
-    .addEventListener("submit", function(event) {
+    .addEventListener("submit", function (event) {
       event.preventDefault();
       event.stopPropagation();
       const id = document.querySelector("#id-update").value;
@@ -73,19 +73,19 @@ window.addEventListener("load", () => {
       const occupation = document.querySelector("#occupation-update").value;
       const weapon = document.querySelector("#weapon-update").value;
       const cartoon = document.querySelector("#cartoon-update").value;
-      charactersAPI.updateOneRegister(id, {name, occupation, weapon, cartoon})
-      .then(()=>{
-        document.querySelector("#update-data").setAttribute(`class`, `active`);
-        
-      })
-      .catch(error=>console.error(error)
-      )
-
+      charactersAPI
+        .updateOneRegister(id, { name, occupation, weapon, cartoon })
+        .then(() => {
+          document
+            .querySelector("#update-data")
+            .setAttribute(`class`, `active`);
+        })
+        .catch(error => console.error(error));
     });
 
   document
     .getElementById("new-character-form")
-    .addEventListener("submit", function(event) {
+    .addEventListener("submit", function (event) {
       event.preventDefault();
       event.stopPropagation();
       const name = document.querySelector("#name-create").value;
@@ -101,6 +101,5 @@ window.addEventListener("load", () => {
         .catch(() => {
           document.querySelector("#send-data").setAttribute(`class`, `error`);
         });
-        
     });
 });
